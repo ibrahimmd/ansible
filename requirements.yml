@@ -1,0 +1,18 @@
+collections:
+  - name: git+https://github.com/ibrahimmd/ansible-collection-homelab.git
+    type: git
+    version: master
+
+  - name: git+https://github.com/ibrahimmd/ansible-collection-network.git
+    type: git
+    version: master
+
+  - name: git+https://github.com/ibrahimmd/ansible-collection-workstation.git
+    type: git
+    version: master
+
+  - name: community.general
+    version: 6.6.0
+
+  - name: community.sops
+    version: 3.0.0

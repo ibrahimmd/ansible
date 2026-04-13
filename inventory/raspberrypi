@@ -1,0 +1,60 @@
+[raspberrypi4]
+pi4.lan
+
+[raspberrypi5]
+pi5.lan
+
+# storage
+[storage_setup]
+pi4.lan
+pi5.lan
+
+# cicd
+[github_runner]
+pi5.lan
+
+# cicd
+[buildkite_agent]
+pi5.lan
+
+# cicd
+[cicd:children]
+github_runner
+buildkite_agent
+
+# adsb
+[dump1090]
+pi4.lan
+pi5.lan
+
+# adsb
+[flightaware]
+pi4.lan
+pi5.lan
+
+# adsb
+[flightradar24]
+pi4.lan
+pi5.lan
+
+[adsb:children]
+dump1090
+flightaware
+flightradar24
+
+# tailscale vpn
+[tailscale]
+pi4.lan
+pi5.lan
+
+# kubernetes
+[k3s]
+pi5.lan
+
+# plex media server
+[plex]
+pi5.lan
+
+[raspberrypi:children]
+raspberrypi4
+raspberrypi5

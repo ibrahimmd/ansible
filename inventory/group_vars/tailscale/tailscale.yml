@@ -1,0 +1,2 @@
+# multiple tailscale devices on the same network cannot use the same local port - they will overwrite the upnp port
+tailscale_port: 41641
