@@ -1,8 +1,9 @@
+---
 collections:
   - name: ibrahimmd.homelab
     source: git+https://github.com/ibrahimmd/ansible-collection-homelab.git
     type: git
-    version: init
+    version: 1.0.0
 
   # - name: git+https://github.com/ibrahimmd/ansible-collection-network.git
   #   type: git

@@ -12,6 +12,9 @@ venv/
 .env/
 .env.*
 
+# pyenv
+.python-version
+
 # ansible facts and temporary files
 *.retry
 *.retry.*

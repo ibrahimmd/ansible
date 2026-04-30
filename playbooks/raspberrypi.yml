@@ -1,4 +1,9 @@
+---
 - hosts: raspberrypi
   roles:
     - ibrahimmd.homelab.storage
+  tasks:
+    - name: check ansible_user
+      ansible.builtin.debug:
+        msg: "ansible_user is {{ ansible_user }}"
 
