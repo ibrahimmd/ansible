@@ -1,1 +1,53 @@
 ---
+- name: bootstrap for raspberry pi nodes
+  hosts: raspberrypi
+  become: true
+
+  vars:
+    bootstrap_users:
+      - name: ibrahim
+        uid: 1001
+        group: users
+        groups:
+        - sudo
+        ssh_key: ~/.ssh/id_ed25519.pub
+      - name: ansible
+        uid: 1002
+        group: users
+        groups:
+        - sudo
+        ssh_key: ~/.ssh/id_ed25519_ansible.pub
+
+  tasks:
+  - name: create users
+    ansible.builtin.user:
+      name: "{{ item.name }}"
+      uid: "{{ item.uid }}"
+      group: "{{ item.group }}"
+      groups: "{{ item.groups | join(',') }}"
+      shell: /bin/bash
+      create_home: true
+    loop: "{{ bootstrap_users }}"
+
+  - name: add ssh keys for users
+    ansible.builtin.authorized_key:
+      user: "{{ item.name }}"
+      key: "{{ lookup('file', item.ssh_key) }}"
+      state: present
+    loop: "{{ bootstrap_users }}"
+
+  - name: add sudoers entries with no sudo passwd
+    ansible.builtin.copy:
+      dest: /etc/sudoers.d/sudo-nopasswd
+      content: |
+        {% for user in bootstrap_users %}
+        {{ user.name }} ALL=(ALL:ALL) NOPASSWD: ALL
+        {% endfor %}
+      mode: "0440"
+      validate: visudo -cf %s
+
+  - name: delete pi (uid 1000) user
+    ansible.builtin.user:
+      name: pi
+      state: absent
+      remove: true
