@@ -1,2 +1,2 @@
-# ansible
-ansible playbooks
+## Documentation
+- [Raspberry Pi setup](docs/raspberrypi.md)
