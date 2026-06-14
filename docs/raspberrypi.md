@@ -14,7 +14,7 @@ Use Raspberry Pi Imager with the following configuration:
 Connects as `pi` to `pi4`, creates `ibrahim` and `ansible` accounts, removes `pi`.
 
 ```bash
-ansible-playbook --limit pi4 --user pi --ask-pass --ask-become-pass playbooks/raspberrypi_bootstrap.yml
+ansible-playbook --limit pi4 --ask-pass --ask-become-pass playbooks/raspberrypi_bootstrap.yml
 ```
 
 ### 3. Run main playbook

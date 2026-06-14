@@ -1,6 +1,7 @@
 ---
 - name: bootstrap for raspberry pi nodes
   hosts: raspberrypi
+  remote_user: pi
   become: true
 
   vars:
@@ -46,8 +47,15 @@
       mode: "0440"
       validate: visudo -cf %s
 
-  - name: delete pi (uid 1000) user
-    ansible.builtin.user:
-      name: pi
-      state: absent
-      remove: true
+- name: remove pi user
+  hosts: raspberrypi
+  remote_user: ansible
+  become: true
+
+  tasks:
+    - name: delete pi (uid 1000) user and home directory
+      ansible.builtin.user:
+        name: pi
+        state: absent
+        force: true
+        remove: true
