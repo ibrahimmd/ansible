@@ -11,10 +11,10 @@ Use Raspberry Pi Imager with the following configuration:
 - Enable SSH: password authentication
 
 ### 2. Run bootstrap
-Connects as `pi`, creates `ibrahim` and `ansible` accounts, removes `pi`.
+Connects as `pi` to `pi4`, creates `ibrahim` and `ansible` accounts, removes `pi`.
 
 ```bash
-ansible-playbook  playbooks/raspberrypi_bootstrap.yml -u pi --ask-pass --ask-become-pass
+ansible-playbook --limit pi4 --user pi --ask-pass --ask-become-pass playbooks/raspberrypi_bootstrap.yml
 ```
 
 ### 3. Run main playbook
