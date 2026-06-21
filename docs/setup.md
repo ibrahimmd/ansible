@@ -90,3 +90,35 @@ Create a virtualenv for the project (name it however you prefer):
 pyenv virtualenv 3.14.6 ansible13_3.14.6
 ```
 
+## Project Setup
+
+```bash
+# Clone repo and cd into it
+git clone
+cd
+
+# Set local virtualenv
+pyenv local ansible13_3.14.5
+
+# Verify the correct virtualenv is active
+pyenv version
+```
+
+## Installation
+
+Install Ansible and other dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+Upgrade Ansible Collection dependenecies and upgrade latest if required
+```bash
+ansible-galaxy collection install -r requirements.yml --upgrade
+```
+
+
+Verify the installation:
+```bash
+ansible --version
+```
+

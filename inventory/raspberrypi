@@ -5,7 +5,7 @@ pi4.lan
 pi5.lan
 
 # storage
-[storage_setup]
+[storage]
 pi4.lan
 pi5.lan
 
