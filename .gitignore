@@ -22,11 +22,6 @@ venv/
 *.vault
 *.sops
 
-# ignore roles installed via ansible-galaxy
-roles/
-# ignore collections installed via ansible-galaxy
-collections/
-
 # ignore Docker artifacts
 *.pid
 *.sock
