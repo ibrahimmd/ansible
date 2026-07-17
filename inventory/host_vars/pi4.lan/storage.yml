@@ -1,1 +1,76 @@
-storage_type: usb
+storage_disk:
+  type: usb         # tran value of lsblk
+  device: /dev/sda
+  label: gpt
+  partition_unit: s
+
+
+
+# each sector is 512 bytes.
+storage_partitions:
+- number: 1
+  name: usb-bootfs
+  role: boot        # used by storage role to determine boot partition
+  start: 2048s
+  end: 1050623s     # 1050623 - 2048 + 1 * 512 = 512mb
+  fs: vfat
+  flags:
+    - msftdata
+- number: 2
+  name: usb-root
+  role: root        # used by storage role to determine root partition
+  start: 1050624s
+  end: 84936703s    # 40gb
+  fs: ext4
+  flags: []
+- number: 3
+  name: usb-swap
+  role: swap
+  start: 84936704s
+  end: 93325311s    # 4gb
+  fs: swap
+  flags:
+    - swap
+- number: 4
+  name: usb-lvm
+  role: lvm
+  start: 93325312s
+  end: 100%         # remaining disk
+  flags:
+    - lvm
+
+storage_lvm:
+  vg:
+    name: vg0
+    pvs:
+    - "{{ storage_disk.device }}4"
+
+  lvs:
+  - name: home
+    size: 20G
+    filesystem: ext4
+    mount: /home
+  - name: k8s_qbittorrent
+    size: 10G
+    filesystem: ext4
+    mount: /var/lib/k8s/qbt
+  - name: k8s_transmission
+    size: 10G
+    filesystem: ext4
+    mount: /var/lib/k8s/transmission
+  - name: rancher
+    size: 10G
+    filesystem: ext4
+    mount: /var/lib/rancher
+  - name: mysql
+    size: 20G
+    filesystem: ext4
+    mount: /var/lib/mysql
+  - name: postgres
+    size: 20G
+    filesystem: ext4
+    mount: /var/lib/postgresql
+  - name: media
+    size: 1T
+    filesystem: ext4
+    mount: /var/lib/media
