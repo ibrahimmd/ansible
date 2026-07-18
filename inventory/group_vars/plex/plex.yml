@@ -1,0 +1,4 @@
+---
+# prompt for plex claim token during initial install
+plex_prompt_claim_token: true
+

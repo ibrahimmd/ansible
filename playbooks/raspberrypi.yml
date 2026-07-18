@@ -6,6 +6,7 @@
   roles:
     - ibrahimmd.homelab.facts
     - ibrahimmd.homelab.storage
+    - ibrahimmd.homelab.plex
 
   tasks:
     - name: check ansible_user
