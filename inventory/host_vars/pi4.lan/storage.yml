@@ -51,11 +51,11 @@ storage_lvm:
   - name: k8s_qbittorrent
     size: 10G
     fs: ext4
-    mount: /var/lib/k8s/qbt
+    mount: /data/k8s/qbittorrent
   - name: k8s_transmission
     size: 10G
     fs: ext4
-    mount: /var/lib/k8s/transmission
+    mount: /data/k8s/transmission
   - name: rancher
     size: 10G
     fs: ext4
@@ -71,7 +71,8 @@ storage_lvm:
   - name: media
     size: 1T
     fs: ext4
-    mount: /var/lib/media
+    role: media     # plex media
+    mount: /data/media
 
 # https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#BOOT_ORDER
 # boot order: usb, sdcard

@@ -1,5 +1,10 @@
 ---
 collections:
+  - name: ibrahimmd.raspberrypi
+    source: git+https://github.com/ibrahimmd/ansible-collection-raspberrypi.git
+    type: git
+    version: 1.0.0
+
   - name: ibrahimmd.homelab
     source: git+https://github.com/ibrahimmd/ansible-collection-homelab.git
     type: git
