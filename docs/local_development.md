@@ -14,5 +14,5 @@ ln -s /local/path/to/ansible-collection-xxxx .ansible/local_collections/ansible_
 Then run the playbook with the local collections path:
 
 ```bash
-ANSIBLE_COLLECTIONS_PATH=./.ansible/local_collections:./.ansible/collections ansible-playbook --limit pi4.lab playbooks/raspberrypi.yml
+ANSIBLE_COLLECTIONS_PATH=./.ansible/local_collections:./.ansible/collections ansible-playbook --limit pi4.lan playbooks/raspberrypi.yml
 ```
