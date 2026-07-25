@@ -1,0 +1,27 @@
+---
+collections:
+  - name: ibrahimmd.raspberrypi
+    source: git+https://github.com/ibrahimmd/ansible-collection-raspberrypi.git
+    type: git
+    version: 1.0.0
+
+  - name: ibrahimmd.homelab
+    source: git+https://github.com/ibrahimmd/ansible-collection-homelab.git
+    type: git
+    version: 1.0.0
+
+  # - name: git+https://github.com/ibrahimmd/ansible-collection-network.git
+  #   type: git
+  #   version: master
+
+  # - name: git+https://github.com/ibrahimmd/ansible-collection-workstation.git
+  #   type: git
+  #   version: master
+
+  - name: community.general
+    type: galaxy
+    version: 12.5.0
+
+  - name: community.sops
+    type: galaxy
+    version: 2.2.7

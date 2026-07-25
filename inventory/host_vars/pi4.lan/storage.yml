@@ -1,0 +1,79 @@
+storage_disk:
+  type: usb         # tran value of lsblk
+  device: /dev/sda
+  label: gpt
+  partition_unit: s
+
+# each sector is 512 bytes.
+storage_partitions:
+- number: 1
+  name: usb-bootfs
+  role: boot        # used by storage role to determine boot partition
+  start: 2048s
+  end: 1050623s     # 1050623 - 2048 + 1 * 512 = 512mb
+  fs: vfat
+  flags:
+    - msftdata
+- number: 2
+  name: usb-root
+  role: root        # used by storage role to determine root partition
+  start: 1050624s
+  end: 84936703s    # 40gb
+  fs: ext4
+  flags: []
+- number: 3
+  name: usb-swap
+  role: swap
+  start: 84936704s
+  end: 93325311s    # 4gb
+  fs: swap
+  flags:
+    - swap
+- number: 4
+  name: usb-lvm
+  role: lvm
+  start: 93325312s
+  end: 100%         # remaining disk
+  flags:
+    - lvm
+
+storage_lvm:
+  vg:
+    name: vg0
+    pvs:
+    - "{{ storage_disk.device }}4"
+  lvs:
+  - name: home
+    size: 20G
+    fs: ext4
+    role: home      # home is only supported within lvm
+    mount: /home
+  - name: k8s_qbittorrent
+    size: 10G
+    fs: ext4
+    mount: /data/k8s/qbittorrent
+  - name: k8s_transmission
+    size: 10G
+    fs: ext4
+    mount: /data/k8s/transmission
+  - name: rancher
+    size: 10G
+    fs: ext4
+    mount: /var/lib/rancher
+  - name: mysql
+    size: 40G
+    fs: ext4
+    mount: /var/lib/mysql
+  - name: postgres
+    size: 40G
+    fs: ext4
+    mount: /var/lib/postgresql
+  - name: media
+    size: 1T
+    fs: ext4
+    role: media     # plex media
+    mount: /data/media
+
+# https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#BOOT_ORDER
+# boot order: usb, sdcard
+storage_eeprom_boot_order: "0xf14"

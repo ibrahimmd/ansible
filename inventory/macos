@@ -1,0 +1,11 @@
+[macbookair]
+
+[macbookpro]
+ibrahim-mbp
+
+[macmini]
+
+[macos:children]
+macbookair
+macbookpro
+macmini
