@@ -1,15 +1,25 @@
 ---
-- name: raspberry pi
+- name: raspberrypi
   hosts: raspberrypi
   become: true
 
+  pre_tasks:
+
   roles:
     - ibrahimmd.homelab.facts
-    - ibrahimmd.raspberrypi.storage
-    - ibrahimmd.homelab.plex
 
   tasks:
-    - name: check ansible_user
-      ansible.builtin.debug:
-        msg: "ansible_user is {{ ansible_user }}"
+    # dynamic include: use include_role if you have a when condition,
+    #                  import_role will check the condition against each task within the role
+    - ansible.builtin.include_role:
+        name: ibrahimmd.raspberrypi.storage
+      when: inventory_hostname in groups['raspberrypi']
+    - ansible.builtin.include_role:
+        name: ibrahimmd.homelab.plex
+      when: inventory_hostname in groups['plex']
+    # - ansible.builtin.import_role:
+    #     name: ibrahimmd.homelab.tailscale
+    #   when: inventory_hostname in groups['tailscale']
 
+
+  post_tasks:
