@@ -1,3 +1,10 @@
 
-tailscale_port: 41644
+tailscale_disable_upnp: true
 
+# this has to be set on router, not handled by tailscale role
+tailscale_router_port: 41644
+
+tailscale_accept_routes: false
+tailscale_advertise_exit_node: true
+tailscale_advertise_routes:
+  - "192.168.10.0/24"
