@@ -53,6 +53,7 @@ pi5.lan
 
 # plex media server
 [plex]
+pi4.lan
 pi5.lan
 
 [raspberrypi:children]
