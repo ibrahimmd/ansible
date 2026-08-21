@@ -4,4 +4,3 @@ creation_rules:
 
   - path_regex: inventory/group_vars/.*\.sops\.yml$
     pgp: 606BFCBC514F6C47F1E32AB31C9C80375373B4FD
-

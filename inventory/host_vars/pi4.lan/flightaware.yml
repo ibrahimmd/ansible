@@ -1,0 +1,2 @@
+# flightaware pi4 host_vars
+flightaware_enabled: false

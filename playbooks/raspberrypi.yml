@@ -20,6 +20,8 @@
     - ansible.builtin.import_role:
         name: ibrahimmd.homelab.tailscale
       when: inventory_hostname in groups['tailscale']
-
+    - ansible.builtin.import_role:
+        name: ibrahimmd.homelab.flightaware
+      when: inventory_hostname in groups['flightaware']
 
   post_tasks:
