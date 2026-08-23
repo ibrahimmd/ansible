@@ -15,6 +15,9 @@
         name: ibrahimmd.raspberrypi.storage
       when: inventory_hostname in groups['raspberrypi']
     - ansible.builtin.include_role:
+        name: ibrahimmd.raspberrypi.bootstrap
+      when: inventory_hostname in groups['raspberrypi']
+    - ansible.builtin.include_role:
         name: ibrahimmd.homelab.plex
       when: inventory_hostname in groups['plex']
     - ansible.builtin.import_role:
