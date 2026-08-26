@@ -11,7 +11,7 @@ ln -s /local/path/to/ansible-collection-homelab .ansible/local_collections/ansib
 ln -s /local/path/to/ansible-collection-xxxx .ansible/local_collections/ansible_collections/ibrahimmd/xxxx
 ```
 
-Then run the playbook with the local collections path:
+`direnv` will export `ANSIBLE_COLLECTIONS_PATH` env set in `.envrc`. If you are not using `direnv` run the playbook with the local collections path:
 
 ```bash
 ANSIBLE_COLLECTIONS_PATH=./.ansible/local_collections:./.ansible/collections ansible-playbook --limit pi4.lan playbooks/raspberrypi.yml
