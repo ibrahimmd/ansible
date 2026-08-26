@@ -35,6 +35,16 @@ brew install pyenv
 brew install pyenv-virtualenv
 ```
 
+#### Install direnv
+
+[direnv](https://direnv.net/)
+
+```bash
+brew install direnv
+```
+
+Configure `direnv` by following the installation steps.
+
 #### Shell Configuration
 
 Add to your shell config (`~/.zshrc` or `~/.bashrc`):
@@ -58,6 +68,16 @@ curl https://pyenv.run | bash
 
 #### Install pyenv-virtualenv
 pyenv-virtualenv is included with pyenv when installed via `pyenv.run`.
+
+
+#### Install direnv
+[direnv](https://direnv.net/)
+
+```bash
+brew install direnv
+```
+
+Configure `direnv` by following the installation steps.
 
 
 #### Shell Configuration
