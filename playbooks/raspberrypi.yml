@@ -20,10 +20,10 @@
     - ansible.builtin.include_role:
         name: ibrahimmd.homelab.plex
       when: inventory_hostname in groups['plex']
-    - ansible.builtin.import_role:
+    - ansible.builtin.include_role:
         name: ibrahimmd.homelab.tailscale
       when: inventory_hostname in groups['tailscale']
-    - ansible.builtin.import_role:
+    - ansible.builtin.include_role:
         name: ibrahimmd.homelab.flightaware
       when: inventory_hostname in groups['flightaware']
 
